@@ -35,4 +35,13 @@
     <Capability Name="privateNetworkClientServer" />
     <rescap:Capability Name="networkingVpnProvider" />
   </Capabilities>
+  <!--<Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>CLRHost.dll</Path>
+        <ActivatableClass ActivatableClassId="ShadowsocksBG.ShadowsocksTask" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="ShadowsocksBG.VpnPlugInImpl" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>-->
 </Package>

@@ -15,11 +15,14 @@ namespace ShadowsocksBG
 {
     public sealed class ShadowsocksTask : IBackgroundTask
     {
-        BackgroundTaskDeferral _deferral; // Note: defined at class scope so we can mark it complete inside the OnCancel() callback if we choose to support cancellation
+        private BackgroundTaskDeferral _deferral; // Note: defined at class scope so we can mark it complete inside the OnCancel() callback if we choose to support cancellation
+
+        private static VpnPlugInImpl vpnPlugInImpl = new VpnPlugInImpl();
 
         public void Run(IBackgroundTaskInstance taskInstance)
         {
-            VpnChannel.ProcessEventAsync("ShadowsocksBG.VpnPlugInImpl", taskInstance);
+            _deferral = taskInstance.GetDeferral();
+            VpnChannel.ProcessEventAsync(vpnPlugInImpl, taskInstance.TriggerDetails);
         }
     }
 }
